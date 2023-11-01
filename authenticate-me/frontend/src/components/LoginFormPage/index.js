@@ -50,17 +50,16 @@ function LoginFormPage() {
         </div>
 
         <div>
-          {loginErrors.length > 0 &&
+          { loginErrors.length > 0 &&
             <ul style={{ color: "red", listStyle: "none", padding: 0 }}>
               {loginErrors.map((error, i) =>
-                <li key={i} style={{ display: 'flex', alignItems: 'center' }}>
+                <li key={i} style={{ display: 'flex', alignItems: 'center'}}>
                   {error}
                 </li>
               )}
             </ul>
           }
         </div>
-
 
         <MDBInput wrapperClass='mb-4 mt-2' label='Email Or Username' type='text'
           onChange={(e) => setCredential(e.target.value)}
