@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { restoreUser } from './store/session';
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage';
+import Navigation from './components/Navigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <Navigation />
       <Switch>
         <Route exact path='/login'>
           <LoginFormPage />

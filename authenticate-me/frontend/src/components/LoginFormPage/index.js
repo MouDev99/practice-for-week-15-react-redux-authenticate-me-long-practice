@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { loginUser } from "../../store/session";
 
 import { MDBBtn, MDBContainer, MDBInput } from 'mdb-react-ui-kit';
@@ -8,6 +8,7 @@ import './LoginForm.css';
 
 function LoginFormPage() {
   const user = useSelector(state => state.session.user);
+  const history = useHistory();
   const dispatch = useDispatch();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
@@ -40,20 +41,20 @@ function LoginFormPage() {
 
   return (
     <MDBContainer className="my-5 gradient-form d-flex justify-content-center">
-      <div className="d-flex flex-column ms-5">
+      <div className="d-flex flex-column ms-5 w-30">
         <div className="text-center">
           <h4 className="mt-1 mb-5 pb-1">Authenticate Me</h4>
         </div>
 
-        <div className="text-center">
+        <div className="text-center" style={{ width: "250px"}}>
           <p>Please login to your account</p>
         </div>
 
         <div>
-          { loginErrors.length > 0 &&
+          {loginErrors.length > 0 &&
             <ul style={{ color: "red", listStyle: "none", padding: 0 }}>
               {loginErrors.map((error, i) =>
-                <li key={i} style={{ display: 'flex', alignItems: 'center'}}>
+                <li key={i} style={{ display: 'flex', alignItems: 'center' }}>
                   {error}
                 </li>
               )}
@@ -80,7 +81,9 @@ function LoginFormPage() {
 
         <div className="d-flex flex-row align-items-center justify-content-center pb-4 mt-2">
           <p className="mb-0">Don't have an account?</p>
-          <MDBBtn outline className='mx-2' color='danger'>
+          <MDBBtn outline className='mx-2' color='danger'
+           onClick={() => history.push('/signup')}
+          >
             Create
           </MDBBtn>
         </div>

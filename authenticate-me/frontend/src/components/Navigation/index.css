@@ -1,0 +1,9 @@
+.active {
+    color: red !important;
+    font-weight: bold;
+}
+
+input.form-control {
+    color: black !important;
+    font-weight: normal;
+}

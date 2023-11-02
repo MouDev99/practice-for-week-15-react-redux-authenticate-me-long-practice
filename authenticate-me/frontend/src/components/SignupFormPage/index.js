@@ -50,7 +50,7 @@ function SignupFormPage() {
                     <h4 className="mt-1 mb-5 pb-1">Authenticate Me</h4>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center" style={{ width: "250px"}}>
                     <p>Create A New Account</p>
                 </div>
 
