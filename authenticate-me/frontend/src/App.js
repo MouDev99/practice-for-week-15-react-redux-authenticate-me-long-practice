@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { restoreUser } from './store/session';
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage';

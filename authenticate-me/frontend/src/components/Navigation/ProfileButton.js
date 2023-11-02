@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from "../../store/session";
 
@@ -12,7 +12,7 @@ function UserInfo() {
     const handleLogout = () => dispatch(logoutUser());
 
     return (
-        <div className="user-info">
+        <div className="user-info" onClick={e => e.stopPropagation()}>
             <p>{username}</p>
             <p>{email}</p>
             <button
@@ -25,17 +25,30 @@ function UserInfo() {
 };
 
 function ProfileButton() {
-    const [showUserInfo, setShowUserInfo] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+
+    const openMenu = (e) => {
+        e.stopPropagation();
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        const closeMenu = () => setShowMenu(false)
+        if (showMenu) {
+            document.addEventListener('click', closeMenu);
+            return () => document.removeEventListener('click', closeMenu);
+        };
+    }, [showMenu]);
 
     return (
         <div className="profile-button">
             <div
               className="icon-div"
-              onClick={() => setShowUserInfo(!showUserInfo)}
+              onClick={openMenu}
             >
                 <i className="fa-solid fa-user"></i>
             </div>
-            { showUserInfo && <UserInfo />}
+            { showMenu && <UserInfo />}
         </div>
     );
 };
