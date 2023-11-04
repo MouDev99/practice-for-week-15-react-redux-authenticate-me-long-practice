@@ -7,6 +7,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import LoginFormModal from '../LoginFormModal';
 
 import './index.css';
 
@@ -23,9 +24,7 @@ function Navigation() {
                         <MDBBreadcrumbItem>
                             <NavLink exact to='/'>Home</NavLink>
                         </MDBBreadcrumbItem>
-                        <MDBBreadcrumbItem>
-                            <NavLink to='/login'>Log In</NavLink>
-                        </MDBBreadcrumbItem>
+                        <LoginFormModal />
                         <MDBBreadcrumbItem active aria-current='page'>
                             <NavLink to='/signup'>Sign Up</NavLink>
                         </MDBBreadcrumbItem>

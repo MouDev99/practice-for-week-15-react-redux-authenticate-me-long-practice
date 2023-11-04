@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { loginUser } from "../../store/session";
 
 import { MDBBtn, MDBContainer, MDBInput } from 'mdb-react-ui-kit';
 import './LoginForm.css';
 
-function LoginFormPage() {
-  const user = useSelector(state => state.session.user);
+function LoginForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [loginErrors, setLoginErrors] = useState([]);
-
-  if (user) return (<Redirect to='/' />);
 
   const handleSigninBtn = async (e) => {
     e.preventDefault();
@@ -40,8 +37,8 @@ function LoginFormPage() {
   };
 
   return (
-    <MDBContainer className="my-5 gradient-form d-flex justify-content-center">
-      <div className="d-flex flex-column ms-5 w-30">
+    <MDBContainer className="my-5">
+      <div className="d-flex flex-column w-30">
         <div className="text-center">
           <h4 className="mt-1 mb-5 pb-1">Authenticate Me</h4>
         </div>
@@ -92,4 +89,4 @@ function LoginFormPage() {
   );
 };
 
-export default LoginFormPage;
+export default LoginForm;
